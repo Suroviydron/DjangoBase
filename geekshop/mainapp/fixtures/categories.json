@@ -1,0 +1,34 @@
+[
+    {
+        "model": "mainapp.productcategory",
+        "pk": 1,
+        "fields": {
+            "name": "дом",
+            "description": "С такой мебелью Вам еще меньше захочется покидать дом."
+        }
+    },
+    {
+        "model": "mainapp.productcategory",
+        "pk": 2,
+        "fields": {
+            "name": "офис",
+            "description": "С такой мебелью даже коронавирус в офисе не будет страшен."
+        }
+    },
+    {
+        "model": "mainapp.productcategory",
+        "pk": 3,
+        "fields": {
+            "name": "модерн",
+            "description": "Похвастайтесь перед друзьями."
+        }
+    },
+    {
+        "model": "mainapp.productcategory",
+        "pk": 4,
+        "fields": {
+            "name": "классика",
+            "description": "Классический стиль актуален в любые времена."
+        }
+    }
+]
