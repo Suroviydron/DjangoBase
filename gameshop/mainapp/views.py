@@ -34,10 +34,21 @@ def playstation(request, pk=None):
 
     categories = ProductCategory.objects.all()
     products = Product.objects.all()
+    newproducts = Product.objects.filter(category__pk=1)
+    exclusiveproducts = Product.objects.filter(category__pk=2)
+    coolproducts = Product.objects.filter(category__pk=3)
+    ubiproducts = Product.objects.filter(category__pk=4)
+    eaproducts = Product.objects.filter(category__pk=5)
     content = {
         "title": title,
         "categories": categories,
-        "products": products, "basket": basket,
+        "products": products,
+        "newproducts": newproducts,
+        "exclusiveproducts": exclusiveproducts,
+        "coolproducts": coolproducts,
+        "ubiproducts": ubiproducts,
+        "eaproducts": eaproducts,
+        "basket": basket,
         "media_url": settings.MEDIA_URL
     }
 
