@@ -61,4 +61,19 @@
 		
 	</div>
 
+	<div class="Catalog">
+		<h2>Товары, похожие на этот</h2>
+		{% for product in same_products %}
+		<div class="product-wrap">
+			<div class="product-item">
+	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
+	  		</div>
+	  		<div class="product-title">
+	    		<a href="{% url 'playstation:game' product.pk %}" class="product-title-link">{{ product.name }}</a>
+	    		<span class="product-price">₽ {{ product.price}}</span>
+	 		</div>
+		</div>
+		{% endfor %}
+	</div>
+
 {% endblock %}

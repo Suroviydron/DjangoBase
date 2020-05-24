@@ -11,16 +11,33 @@
 {% endblock %}
 
 {% block content %}
-	
-	{% for category in categories %}
+
+	<div class="details-products">
+	    <div class="details-slider">
+	        <div class="slider-product">
+	          <a href="{% url 'playstation:game' hot_product.pk %}"><img src="/media/{{ hot_product.image }}"></a>
+	        </div>  
+	    </div>
+
+	    <div class="description">
+	        <h3 class="big-bold">{{ hot_product.name }}</h3>
+	        <h3 class="yellow">горячее предложение</h3>
+	        <p class="price">{{ hot_product.price }} <span>₽</span></p>
+	        <a href="{% url 'basket:add' hot_product.pk %}" class="HotGamePriceButton-link">
+	          заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+	        </a>
+	        <div class="description-text">
+	          {{ hot_product.description }} 
+	        </div>
+	    </div>	    
+	</div>
+
 	<div class="GameHeader">		
-		<div class="left">{{ category.name }}</div>
+		<div class="left">{{ categories.0.name }}</div>
 	</div>
-	{% endfor %}
-
 
 	<div class="Catalog">
-		{% for product in newproducts %}
+		{% for product in new_products %}
 		<div class="product-wrap">
 			<div class="product-item">
 	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
@@ -33,8 +50,12 @@
 		{% endfor %}
 	</div>
 
+	<div class="GameHeader">		
+		<div class="left">{{ categories.1.name }}</div>
+	</div>
+
 	<div class="Catalog">
-		{% for product in exclusiveproducts %}
+		{% for product in exclusive_products %}
 		<div class="product-wrap">
 			<div class="product-item">
 	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
@@ -46,8 +67,13 @@
 		</div>
 		{% endfor %}
 	</div>
+
+	<div class="GameHeader">		
+		<div class="left">{{ categories.2.name }}</div>
+	</div>
+
 	<div class="Catalog">
-		{% for product in coolproducts %}
+		{% for product in cool_products %}
 		<div class="product-wrap">
 			<div class="product-item">
 	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
@@ -59,8 +85,13 @@
 		</div>
 		{% endfor %}
 	</div>
+
+	<div class="GameHeader">		
+		<div class="left">{{ categories.3.name }}</div>
+	</div>
+
 	<div class="Catalog">
-		{% for product in ubiproducts %}
+		{% for product in ubisoft_products %}
 		<div class="product-wrap">
 			<div class="product-item">
 	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
@@ -72,8 +103,12 @@
 		</div>
 		{% endfor %}
 	</div>
+
+	<div class="GameHeader">		
+		<div class="left">{{ categories.4.name }}</div>
+	</div>
 	<div class="Catalog">
-		{% for product in eaproducts %}
+		{% for product in ea_products %}
 		<div class="product-wrap">
 			<div class="product-item">
 	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
