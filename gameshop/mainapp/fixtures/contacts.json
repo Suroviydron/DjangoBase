@@ -1,0 +1,32 @@
+[
+    {
+        "model": "mainapp.contact",
+        "pk": 1,
+        "fields": {
+            "phone": "+7-918-123-4567",
+            "email": "Top-Games@mail.ru",
+            "city": "Сочи",
+            "address": "Возле Олимпийского парка"
+        }
+    },
+    {
+        "model": "mainapp.contact",
+        "pk": 2,
+        "fields": {
+            "phone": "+7-777-777-7777",
+            "email": "Top-Games@mail.ru",
+            "city": "Краснодар",
+            "address": "ул. Гидростроителей, 8"
+        }
+    },
+    {
+        "model": "mainapp.contact",
+        "pk": 3,
+        "fields": {
+            "phone": "+7-969-999-9999",
+            "email": "Top-Games@mail.ru",
+            "city": "Краснодар",
+            "address": "ул. Красная, 66"
+        }
+    }
+]

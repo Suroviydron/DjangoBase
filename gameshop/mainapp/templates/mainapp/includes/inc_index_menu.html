@@ -1,0 +1,26 @@
+<ul class="index-menu">
+    <li class="Menu-list"><a href="{% url 'main' %}" class="index-menu-link-active">Главная</a></li>
+    <li class="Menu-list"><a href="{% url 'playstation:index' %}" class="index-menu-link">PlayStation</a></li>
+    <li class="Menu-list"><a href="{% url 'contact' %}" class="index-menu-link">О нас</a></li>
+    
+    {% if user.is_authenticated %}
+    <li class="Menu-list">
+        <a href="{% url 'auth:edit' %}" class="index-menu-link">
+            {{ user.first_name|default:'Пользователь' }}
+        </a>
+    </li>
+    {% endif %}
+    <li class="Menu-list">
+        {% if user.is_authenticated %}
+        <a href="{% url 'auth:logout' %}" class="index-menu-link">Выйти</a>
+        {% else %}
+        <a href="{% url 'auth:login' %}" class="index-menu-link">Войти</a>
+        {% endif %}
+    </li>
+    <a href="#" class="search"></a>
+    <a href="{% url 'basket:view' %}" class="basket">
+        <span class="basket-index-span">
+            {% if basket %} {{ basket|length }} {% endif %}
+        </span>
+    </a> 
+</ul>

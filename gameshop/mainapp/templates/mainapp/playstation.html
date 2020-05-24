@@ -1,0 +1,89 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block menu %}
+<div class="Container">
+        <div class="Header">
+            <p class="Logo-black">Top Games KRD</p> 
+			{% include 'mainapp/includes/inc_menu.html' %}
+		</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	
+	{% for category in categories %}
+	<div class="GameHeader">		
+		<div class="left">{{ category.name }}</div>
+	</div>
+	{% endfor %}
+
+
+	<div class="Catalog">
+		{% for product in newproducts %}
+		<div class="product-wrap">
+			<div class="product-item">
+	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
+	  		</div>
+	  		<div class="product-title">
+	    		<a href="{% url 'playstation:game' product.pk %}" class="product-title-link">{{ product.name }}</a>
+	    		<span class="product-price">₽ {{ product.price}}</span>
+	 		</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="Catalog">
+		{% for product in exclusiveproducts %}
+		<div class="product-wrap">
+			<div class="product-item">
+	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
+	  		</div>
+	  		<div class="product-title">
+	    		<a href="{% url 'playstation:game' product.pk %}" class="product-title-link">{{ product.name }}</a>
+	    		<span class="product-price">₽ {{ product.price}}</span>
+	 		</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="Catalog">
+		{% for product in coolproducts %}
+		<div class="product-wrap">
+			<div class="product-item">
+	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
+	  		</div>
+	  		<div class="product-title">
+	    		<a href="{% url 'playstation:game' product.pk %}" class="product-title-link">{{ product.name }}</a>
+	    		<span class="product-price">₽ {{ product.price}}</span>
+	 		</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="Catalog">
+		{% for product in ubiproducts %}
+		<div class="product-wrap">
+			<div class="product-item">
+	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
+	  		</div>
+	  		<div class="product-title">
+	    		<a href="{% url 'playstation:game' product.pk %}" class="product-title-link">{{ product.name }}</a>
+	    		<span class="product-price">₽ {{ product.price}}</span>
+	 		</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="Catalog">
+		{% for product in eaproducts %}
+		<div class="product-wrap">
+			<div class="product-item">
+	    		<a href="{% url 'playstation:game' product.pk %}"><img src="{{ media_url }}{{ product.image }}" class="Catalog-image"></a>
+	  		</div>
+	  		<div class="product-title">
+	    		<a href="{% url 'playstation:game' product.pk %}" class="product-title-link">{{ product.name }}</a>
+	    		<span class="product-price">₽ {{ product.price}}</span>
+	 		</div>
+		</div>
+		{% endfor %}
+	</div>	
+
+{% endblock %}
