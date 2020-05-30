@@ -1,3 +1,5 @@
+{% load static %}
+
 <ul class="index-menu">
     <li class="Menu-list"><a href="{% url 'main' %}" class="index-menu-link-active">Главная</a></li>
     <li class="Menu-list"><a href="{% url 'playstation:index' %}" class="index-menu-link">PlayStation</a></li>
@@ -18,9 +20,12 @@
         {% endif %}
     </li>
     <a href="#" class="search"></a>
-    <a href="{% url 'basket:view' %}" class="basket">
-        <span class="basket-index-span">
-            {% if basket %} {{ basket|length }} {% endif %}
+    <a href="{% url 'basket:view' %}" class="basket-index-span">
+        <img src="{% static 'img/basket.png' %}">
+        <span>
+            {% if basket %} 
+                {{ basket.0.total_cost|floatformat:0 }} ₽ ({{ basket.0.total_quantity }} товар)
+            {% endif %}
         </span>
-    </a> 
+    </a>
 </ul>
