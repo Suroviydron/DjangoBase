@@ -1,0 +1,55 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+  <button class="add_smth_new">
+    <a href="{% url 'admin:product_create' category.pk %}">Добавить новый продукт</a>
+  </button>
+
+  <div class="Container">
+    {% for product in products %}
+    <div class="GameHeader">
+      <div class="left"> {{ product.name }}</div>
+      <div class="right">Каталог >> Игры >> {{ product.name }}</div>
+    </div>
+    <div class="GameReview">
+
+        <a href="{{ media_url }}{{ product.image }}" class="Gameimage-link"><img src = "{{ media_url }}{{ product.image }}" class="Gameimage"></a>
+        
+        <div>
+          <p class="Game-H1">{{ product.name }}</p>
+          <ul>
+            <li><b>Издатель:</b> {{ product.publisher }}</li>
+            <li><b>Разработчик:</b> {{ product.developer }}</li>
+            <li><b>Дата выхода:</b> {{ product.released }}</li>
+            <li><b>Платформа:</b> {{ product.platform }}</li>
+            <li><b>Жанр:</b> {{ product.genre }}</li>
+            <li><b>Язык:</b> {{ product.language }}</li>
+            <li><b>Возрастной рейтинг:</b> {{ product.age }}</li>
+          </ul>
+          <p class="Game-H1">₽ {{ product.price }}</p>
+        </div>
+
+      </div>
+
+      <div class="GameFeatures">
+        {{ product.description }} 
+      </div>
+
+      <div class="Describe">
+        <table class="GameImages">
+            <tr>
+              <td class="GameImages-cells"><a href="{{ media_url }}{{ product.image01 }}"><img src = "{{ media_url }}{{ product.image01 }}"></a></td>
+              <td class="GameImages-cells"><a href="{{ media_url }}{{ product.image02 }}"><img src = "{{ media_url }}{{ product.image02 }}"></a></td>
+              <td class="GameImages-cells"><a href="{{ media_url }}{{ product.image03 }}"><img src = "{{ media_url }}{{ product.image03 }}"></a></td>
+            </tr>
+            <tr>
+              <td class="GameImages-cells"><a href="{{ media_url }}{{ product.image04 }}"><img src = "{{ media_url }}{{ product.image04 }}"></a></td>
+              <td class="GameImages-cells"><a href="{{ media_url }}{{ product.image05 }}"><img src = "{{ media_url }}{{ product.image05 }}"></a></td>
+              <td class="GameImages-cells"><a href="{{ media_url }}{{ product.image06 }}"><img src = "{{ media_url }}{{ product.image06 }}"></a></td>
+            </tr>
+        </table>       
+      </div>
+    {% endfor%}
+  </div>
+{% endblock %}

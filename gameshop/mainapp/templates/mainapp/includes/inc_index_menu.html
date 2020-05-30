@@ -12,6 +12,11 @@
         </a>
     </li>
     {% endif %}
+    {% if user.is_superuser %}
+    <li class="Menu-list">
+        <a href="{% url 'admin:users' %}" class="index-menu-link">Админка</a>
+    </li>
+    {% endif %}
     <li class="Menu-list">
         {% if user.is_authenticated %}
         <a href="{% url 'auth:logout' %}" class="index-menu-link">Выйти</a>

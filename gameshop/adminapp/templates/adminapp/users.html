@@ -1,0 +1,62 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+   <button class="add_smth_new">
+      <a href="{% url 'admin:user_create' %}">Добавить нового пользователя</a>
+    </button><br>
+  <div class="users_list">
+   
+    {% for user in users %}
+      <div class="user_record {% if not user.is_active %}not_active{% endif %}">
+        <img 
+          src="{{ media_url }}{{ user.avatar|default:'users_avatars/default.jpg' }}"
+          alt="{{ user.username }}">
+        <div class="user_button">
+          <button>
+            <a href="{% url 'admin:user_update' user.pk %}">
+              редактировать
+            </a>
+          </button>
+          <button>
+            <a href="{% url 'admin:user_delete' user.pk %}">
+              удалить
+            </a>
+          </button>
+        </div>
+        <div class="user_role">
+          <p>Роль: <br> 
+            {% if user.is_superuser %}
+              администратор
+            {% else %}
+              пользователь
+            {% endif %}
+          </p>
+        </div>
+        <div class="user_name">
+          Имя пользователя:<br>{{ user.username }}
+          <p>
+            {% if user.first_name %}
+              <b>{{ user.first_name|title }}</b>
+                {% if user.last_name %}
+                  <p>{{ user.last_name|title }}</p>
+                {% endif %}
+            {% endif %}
+          </p>
+        </div>
+        <div class="user_age">
+          Возраст:<br>
+          {{ user.age }} лет
+        </div>
+        <div class="user_email">
+          Почта:<br>
+          {{ user.email }}
+        </div>
+        <div class="user_lastlogin">
+          Последний вход:<br>
+          {{ user.last_login }}
+        </div>
+      </div>
+    {% endfor%}
+  </div>
+{% endblock %}
