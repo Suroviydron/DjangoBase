@@ -31,6 +31,11 @@
         <a href="{% url 'auth:login' %}">войти</a>
         {% endif %}
     </li>
+    {% if user.is_superuser %}
+    <li class="Menu-list">
+        <a href="{% url 'admin:users' %}">Админка</a>
+    </li>
+    {% endif %}
     <a href="#" class="search"></a>
     <a href="{% url 'basket:view' %}" class="basket">
         <img src="{% static 'img/basket.png' %}">
