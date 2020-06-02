@@ -7,26 +7,22 @@
     </button><br>
   <div class="users_list">
    
-    {% for user in users %}
-      <div class="user_record {% if not user.is_active %}not_active{% endif %}">
+    {% for object in object_list %}
+      <div class="user_record {% if not object.is_active %}not_active{% endif %}">
         <img 
-          src="{{ media_url }}{{ user.avatar|default:'users_avatars/default.jpg' }}"
-          alt="{{ user.username }}">
+          src="/media/{{ object.avatar|default:'users_avatars/default.jpg' }}"
+          alt="{{ object.username }}">
         <div class="user_button">
           <button>
-            <a href="{% url 'admin:user_update' user.pk %}">
-              редактировать
-            </a>
+            <a href="{% url 'admin:user_update' object.pk %}">редактировать</a>
           </button>
           <button>
-            <a href="{% url 'admin:user_delete' user.pk %}">
-              удалить
-            </a>
+            <a href="{% url 'admin:user_delete' object.pk %}">удалить</a>
           </button>
         </div>
         <div class="user_role">
           <p>Роль: <br> 
-            {% if user.is_superuser %}
+            {% if object.is_superuser %}
               администратор
             {% else %}
               пользователь
@@ -34,27 +30,27 @@
           </p>
         </div>
         <div class="user_name">
-          Имя пользователя:<br>{{ user.username }}
+          Имя пользователя:<br>{{ object.username }}
           <p>
-            {% if user.first_name %}
-              <b>{{ user.first_name|title }}</b>
-                {% if user.last_name %}
-                  <p>{{ user.last_name|title }}</p>
+            {% if object.first_name %}
+              <b>{{ object.first_name|title }}</b>
+                {% if object.last_name %}
+                  <p>{{ object.last_name|title }}</p>
                 {% endif %}
             {% endif %}
           </p>
         </div>
         <div class="user_age">
           Возраст:<br>
-          {{ user.age }} лет
+          {{ object.age }} лет
         </div>
         <div class="user_email">
           Почта:<br>
-          {{ user.email }}
+          {{ object.email }}
         </div>
         <div class="user_lastlogin">
           Последний вход:<br>
-          {{ user.last_login }}
+          {{ object.last_login }}
         </div>
       </div>
     {% endfor%}
