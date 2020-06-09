@@ -11,17 +11,8 @@ import datetime
 
 def main(request):
     title = 'Главная'
-    basket = []
-    if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
-    content = {'title': title,  "basket": basket, "media_url": settings.MEDIA_URL}
+    content = {'title': title,  "media_url": settings.MEDIA_URL}
     return render(request, 'mainapp/index.html', content)
-
-def get_basket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    else:
-        return []
 
 
 def get_hot_product():
@@ -36,7 +27,6 @@ def get_same_products(hot_product):
 
 def playstation(request, pk=None):
     title = "PlayStation"
-    basket = get_basket(request.user)
 
     if pk is not None:
         product = get_object_or_404(Product, pk=pk)
@@ -44,7 +34,6 @@ def playstation(request, pk=None):
         content = {
             "title": title,
             "product": product,
-            "basket": basket,
             "same_products": same_products,
             "media_url": settings.MEDIA_URL,
         }
@@ -69,7 +58,6 @@ def playstation(request, pk=None):
         "ubisoft_products": ubisoft_products,
         "ea_products": ea_products,
         "hot_product": hot_product,
-        "basket": basket,
         "media_url": settings.MEDIA_URL,
     }
 
@@ -83,13 +71,11 @@ def game_list(request, pk=None):
 
     if pk is not None:
         title = "Игра для PlayStation"
-        basket = get_basket(request.user)
         product = get_object_or_404(Product, pk=pk)
 
     content = {
         "product": product,
         "title": title,
-        "basket": basket,
         "media_url": settings.MEDIA_URL,
     }
 
@@ -100,9 +86,6 @@ def contact(request):
     title = "О нас"
     visit_date = datetime.datetime.now()
     information = Contact.objects.all()
-    basket = []
-    if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
-    content = {"title": title, "visit_date": visit_date, "basket": basket, "information": information}
+    content = {"title": title, "visit_date": visit_date, "information": information}
     return render(request, "mainapp/contact.html", content)
 
