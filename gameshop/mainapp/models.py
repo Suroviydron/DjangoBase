@@ -30,6 +30,7 @@ class Product(models.Model):
     image05 = models.ImageField(upload_to='products_images', blank=True)
     image06 = models.ImageField(upload_to='products_images', blank=True)
     video_url = models.TextField(verbose_name="ссылка на видео", blank=True)
+    is_active = models.BooleanField(verbose_name='активна', default=True)
 
     def __str__(self):
         return self.name
