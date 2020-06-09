@@ -1,11 +1,11 @@
-
-from django.urls import path
+from django.urls import re_path
+from .apps import MainappConfig
 
 import mainapp.views as mainapp
 
-app_name = 'mainapp'
+app_name = MainappConfig.name
 
 urlpatterns = [
-   path('', mainapp.playstation, name='index'),
-   path('game/<int:pk>/', mainapp.playstation, name='game'),
+   re_path(r"^$", mainapp.playstation, name='index'),
+   re_path(r"^game/(?P<pk>\d+)/$", mainapp.playstation, name='game'),
 ]

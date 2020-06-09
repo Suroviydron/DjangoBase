@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.db import migrations
+from django.db import migrations, transaction
 
 
 def forwards_func(apps, schema_editor):
@@ -8,23 +8,21 @@ def forwards_func(apps, schema_editor):
         try:
             from authnapp.models import ShopUser
 
-            ShopUser.objects.create_superuser("Admin", "SuroviyDron@google.com", "123", age=27)
-
-        except:
-
-            print("Cann't create super user for debug")
+            with transaction.atomic():
+                ShopUser.objects.create_superuser("admin", "root@google.com", "admin", age=33)
+        except Exception as exp:
+            print(f"Cann't create super user for debug: {exp}")
 
 
 def reverse_func(apps, schema_editor):
     if settings.DEBUG:
-
         try:
             from authnapp.models import ShopUser
 
-            ShopUser.objects.create_superuser("Admin", "SuroviyDron@google.com", "123", age=27)
-
-        except:
-            print("Cann't delete super user for debug")
+            with transaction.atomic():
+                ShopUser.objects.all().delete()
+        except Exception as exp:
+            print(f"Cann't delete super user for debug: {exp}")
 
 
 class Migration(migrations.Migration):

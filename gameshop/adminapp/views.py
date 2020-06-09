@@ -126,17 +126,17 @@ class ProductCategoryDeleteView(LoginRequiredMixin, DeleteView):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def products(request, pk, page=1):
+def products(request, pk, page="1"):
     title = "Продукты"
 
     category = get_object_or_404(ProductCategory, pk=pk)
     products_list = Product.objects.filter(category__pk=pk).order_by('name')
 
-    paginator = Paginator(products_list, 2)
+    paginator = Paginator(products_list, "2")
     try:
         products_paginator = paginator.page(page)
     except PageNotAnInteger:
-        products_paginator = paginator.page(1)
+        products_paginator = paginator.page("1")
     except EmptyPage:
         products_paginator = paginator.page(paginator.num_pages)
 

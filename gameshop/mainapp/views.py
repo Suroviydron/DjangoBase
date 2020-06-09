@@ -1,11 +1,21 @@
-import datetime
+
 from django.conf import settings
 from django.shortcuts import get_object_or_404, render
 
 from basketapp.models import Basket
 from .models import Contact, Product, ProductCategory
+from django.utils import timezone
 import random
+import datetime
 
+
+def main(request):
+    title = 'Главная'
+    basket = []
+    if request.user.is_authenticated:
+        basket = Basket.objects.filter(user=request.user)
+    content = {'title': title,  "basket": basket, "media_url": settings.MEDIA_URL}
+    return render(request, 'mainapp/index.html', content)
 
 def get_basket(user):
     if user.is_authenticated:
@@ -22,15 +32,6 @@ def get_hot_product():
 def get_same_products(hot_product):
     same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
     return same_products
-
-
-def main(request):
-    title = 'Главная'
-    basket = []
-    if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
-    content = {'title': title,  "basket": basket, "media_url": settings.MEDIA_URL}
-    return render(request, 'mainapp/index.html', content)
 
 
 def playstation(request, pk=None):

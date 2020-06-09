@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from basketapp.models import Basket
 from mainapp.models import Product
-
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
@@ -14,6 +16,7 @@ def basket(request):
     content = {
         'title': title,
         'basket_items': basket_items,
+        "media_url": settings.MEDIA_URL,
     }
 
     return render(request, 'basketapp/basket.html', content)
@@ -25,7 +28,6 @@ def basket_add(request, pk):
         return HttpResponseRedirect(reverse('playstation:game', args=[pk]))
 
     product = get_object_or_404(Product, pk=pk)
-
     basket = Basket.objects.filter(user=request.user, product=product).first()
 
     if not basket:
@@ -44,3 +46,28 @@ def basket_remove(request, pk):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
+@login_required
+def basket_edit(request, pk, quantity):
+    if request.is_ajax():
+        try:
+            pk = int(pk)
+            quantity = int(quantity)
+        except Exception as exp:
+            print(f"Wrong input numbers! {exp}")
+            raise exp
+        new_basket_item = Basket.objects.get(pk=int(pk))
+
+        if quantity > 0:
+            new_basket_item.quantity = quantity
+            new_basket_item.save()
+        else:
+            new_basket_item.delete()
+
+        basket_items = Basket.objects.filter(user=request.user).order_by("product__category")
+
+        content = {"basket_items": basket_items, "media_url": settings.MEDIA_URL}
+
+        result = render_to_string("basketapp/includes/inc_basket_list.html", content)
+
+        return JsonResponse({"result": result})

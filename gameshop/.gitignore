@@ -5,3 +5,9 @@ __pycache__
 # Files
 *sqlite3
 *.pyc
+
+# geekshop --->
+
+tmp
+
+# <--- geekshop
