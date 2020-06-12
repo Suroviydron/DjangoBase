@@ -1,0 +1,15 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block menu %}
+<div class="Index">
+	    <div class="index-header">
+			<p class="index-logo">Top Games KRD</p>
+			{% include 'mainapp/includes/inc_index_menu.html' %}
+		</div>
+		<video loop="" muted="" autoplay="" poster="{% static 'img/nioh2.jpg' %}" class="Background-video">
+	        <source src="{% static 'img/nioh.mp4' %}" type="video/mp4">
+	    </video>
+</div>
+
+{% endblock %}
