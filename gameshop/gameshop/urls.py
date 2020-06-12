@@ -12,6 +12,7 @@ urlpatterns = [
     re_path(r"^contact/", mainapp.contact, name="contact"),
     re_path(r"^auth/", include('authnapp.urls', namespace='auth')),
     re_path(r"^basket/", include('basketapp.urls', namespace='basket')),
+    re_path(r"^order/", include('ordersapp.urls', namespace="order")),
     path("", include("social_django.urls", namespace="social"))
 ]
 
