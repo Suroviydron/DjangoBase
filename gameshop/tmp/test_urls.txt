@@ -1,0 +1,11 @@
+http://127.0.0.1/
+http://127.0.0.1/playstation/
+http://127.0.0.1/contact/
+http://127.0.0.1/playstation/game/1/
+http://127.0.0.1/playstation/game/2/
+http://127.0.0.1/playstation/game/3/
+http://127.0.0.1/playstation/game/4/
+http://127.0.0.1/basket/
+http://127.0.0.1/order/
+http://127.0.0.1/auth/edit/
+http://127.0.0.1/order/update/1/
