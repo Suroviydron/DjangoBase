@@ -1,5 +1,5 @@
 # Dirs
-.code
+code
 __pycache__
 
 # Files
@@ -8,6 +8,6 @@ __pycache__
 
 # gameshop --->
 
-tmp
+
 
 # <--- gameshop

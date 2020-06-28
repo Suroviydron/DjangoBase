@@ -1,0 +1,13 @@
+http://127.0.0.1:8000/auth/login/?next=/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/playstation/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/contact/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/playstation/game/1/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/playstation/game/2/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/playstation/game/3/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/playstation/game/4/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/basket/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/order/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/auth/edit/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/order/update/1/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/order/update/3/ POST username=admin&password=admin
+http://127.0.0.1:8000/auth/login/?next=/order/update/4/ POST username=admin&password=admin
